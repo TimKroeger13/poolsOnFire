@@ -26,6 +26,7 @@ library(beepr)
 source(file = paste(getwd(),"/","subfunctions/","stringDestructure.R",sep = ""))
 source(file = paste(getwd(),"/","subfunctions/","getBoundingBox.R",sep = ""))
 source(file = paste(getwd(),"/","subfunctions/","concatEnvelopes.R",sep = ""))
+source(file = paste(getwd(),"/","subfunctions/","SplitArray.R",sep = ""))
 
 if (loadAndCutData){
   
@@ -99,12 +100,12 @@ OR bezfkt = 'Kleingarten') AS secondtable
 #work in progress
 
 axis = 'y'
-x_CoordinateVoctor = coordinates_X
-Y_CoordinateVoctor = coordinates_Y
-ClusterVector = clusterNumber
+x_CoordinateVoctor = LandAreaEnvelopArrays$corX
+Y_CoordinateVoctor = LandAreaEnvelopArrays$CorY
+ClusterVector = LandAreaEnvelopArrays$ClusN
 
 
-a = SplitArray(coordinates_X,coordinates_Y,clusterNumber,'y')
+a = SplitArray(x_CoordinateVoctor,Y_CoordinateVoctor,ClusterVector,'y')
 print(a$median)
 
 b = SplitArray(a$lowerSlpit_X,a$lowerSlpit_Y,a$lowerCluster,'x')
